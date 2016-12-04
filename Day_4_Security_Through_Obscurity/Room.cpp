@@ -89,6 +89,20 @@ std::vector<Room::Letter>* Room::letter_frequency() {
     return frequency;
 }
 
+void Room::decrypt_name() {
+    for (auto i = name->begin(); i != name->end(); i++) {
+        if (*i == '-') {
+            *i = ' ';
+        } else {
+            *i = 'a' + ((*i - 'a' + sector_id) % ('z' - 'a' + 1));
+        }
+    }
+}
+
+bool Room::part_of_name(const std::string& substring) {
+    return name->find(substring) != std::string::npos;
+}
+
 int Room::get_sector_id() {
     return sector_id;
 }

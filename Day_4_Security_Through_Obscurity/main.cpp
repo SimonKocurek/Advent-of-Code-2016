@@ -28,5 +28,11 @@ void process_line(std::string& line, int& result) {
     Room room(line);
     if (room.is_room()) {
         result = result + room.get_sector_id();
+        
+        room.decrypt_name();
+        
+        if (room.part_of_name("north")) {
+            std::cout << room.get_sector_id() << '\n';
+        }
     }
 }

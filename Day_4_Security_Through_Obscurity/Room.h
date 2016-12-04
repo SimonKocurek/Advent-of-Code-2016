@@ -17,6 +17,8 @@ public:
     
     bool is_room();
     int get_sector_id();
+    void decrypt_name();
+    bool part_of_name(const std::string& substring);
     
 private:
     std::string* name;
